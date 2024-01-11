@@ -15,7 +15,7 @@ exports.create = async (req, res) => {
       .getRepository('ExampleAuthor')
       .save(data);
 
-    res.status(200).json(
+    return res.status(200).json(
       baseResp({
         status: true,
         result: exampleAuthor,
@@ -24,7 +24,7 @@ exports.create = async (req, res) => {
     );
   } catch (error) {
     console.log('error :>> ', error);
-    res.status(500).json(
+    return res.status(500).json(
       baseResp({
         message: _.get(error, ['message']),
       })
@@ -49,7 +49,7 @@ exports.get = async (req, res) => {
         cache: true,
       });
 
-    res.status(200).json(
+    return res.status(200).json(
       baseResp({
         status: true,
         result: dataList,
@@ -61,7 +61,7 @@ exports.get = async (req, res) => {
     );
   } catch (error) {
     console.log('error :>> ', error);
-    res.status(500).json(
+    return res.status(500).json(
       baseResp({
         message: _.get(error, ['message']),
       })
@@ -76,7 +76,7 @@ exports.getById = async (req, res) => {
       relations: { author: true },
       where: { id },
     });
-    res.status(200).json(
+    return res.status(200).json(
       baseResp({
         status: true,
         result: data,
@@ -84,7 +84,7 @@ exports.getById = async (req, res) => {
       })
     );
   } catch (error) {
-    res.status(500).json(
+    return res.status(500).json(
       baseResp({
         message: _.get(error, ['message']),
       })
@@ -104,7 +104,7 @@ exports.update = async (req, res) => {
     dataSource.getRepository('ExampleAuthor').merge(author, { name });
     const data = await dataSource.getRepository('ExampleAuthor').save(author);
 
-    res.status(200).json(
+    return res.status(200).json(
       baseResp({
         status: true,
         result: data,
@@ -112,7 +112,7 @@ exports.update = async (req, res) => {
       })
     );
   } catch (error) {
-    res.status(500).json(
+    return res.status(500).json(
       baseResp({
         message: _.get(error, ['message']),
       })
@@ -125,7 +125,7 @@ exports.destroy = async (req, res) => {
     const { id } = req.params;
 
     await dataSource.getRepository('ExampleAuthor').delete(id);
-    res.status(200).json(
+    return res.status(200).json(
       baseResp({
         status: true,
         result: { id },
@@ -133,7 +133,7 @@ exports.destroy = async (req, res) => {
       })
     );
   } catch (error) {
-    res.status(500).json(
+    return res.status(500).json(
       baseResp({
         message: _.get(error, ['message']),
       })
@@ -161,7 +161,7 @@ exports.exampleRedisAndSocket = async (req, res) => {
 
     io.emit('example_event', { message: 'Hello from exampleController' });
 
-    res.status(200).json(
+    return res.status(200).json(
       baseResp({
         status: true,
         result: 'rawData',
@@ -169,7 +169,7 @@ exports.exampleRedisAndSocket = async (req, res) => {
       })
     );
   } catch (error) {
-    res.status(500).json(
+    return res.status(500).json(
       baseResp({
         message: _.get(error, ['message']),
       })

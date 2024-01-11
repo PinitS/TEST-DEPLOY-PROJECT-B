@@ -31,7 +31,7 @@ exports.getRedis = async (req, res) => {
         }
         return result;
       });
-    res.status(200).json(
+    return res.status(200).json(
       baseResp({
         status: true,
         result: resp,
@@ -40,7 +40,7 @@ exports.getRedis = async (req, res) => {
     );
   } catch (error) {
     console.log('error :>> ', error);
-    res.status(500).json(
+    return res.status(500).json(
       baseResp({
         message: _.get(error, ['message']),
       })
@@ -52,7 +52,7 @@ exports.setRedis = async (req, res) => {
   try {
     const { redisExample, isLimit = false } = req.body;
     await setCache({ isLimit, key: REDIS_KEY, data: redisExample });
-    res.status(200).json(
+    return res.status(200).json(
       baseResp({
         status: true,
         result: redisExample,
@@ -61,7 +61,7 @@ exports.setRedis = async (req, res) => {
     );
   } catch (error) {
     console.log('error :>> ', error);
-    res.status(500).json(
+    return res.status(500).json(
       baseResp({
         message: _.get(error, ['message']),
       })
