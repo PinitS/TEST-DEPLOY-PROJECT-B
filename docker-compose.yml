@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  qr-bistro-api-nginx:
+    image: nginx:alpine
+    volumes:
+      - ./nginx:/etc/nginx/conf.d
+    environment:
+      VIRTUAL_HOST: qr-bistro-api.tent-official.com
+    restart: always
+  # app เปลี่ยนชื่อตามชื่อ service ถ้ามีหลายอันก็อย่าซ้ำกัน
+  qr-bistro-api:
+    build: .
+    container_name: 'QR_BISTRO_API'
+    env_file:
+      - ./.env
+    restart: always
+
+networks:
+  default:
+    name: docker-network
+    external: true
