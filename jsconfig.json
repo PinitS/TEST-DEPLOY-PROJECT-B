@@ -6,10 +6,10 @@
       "@database/*": ["./src/database/*"],
       "@middleware/*": ["./src/middleware/*"],
       "@redis/*": ["./src/redis/*"],
-      "@socket/*": ["./src/socket/*"],
       "@routes/*": ["./src/routes/*"],
-      "@utils/*": ["./src/utils/*"],
+      "@socket/*": ["./src/socket/*"],
       "@static/*": ["./src/static/*"],
+      "@utils/*": ["./src/utils/*"],
       "@validate/*": ["./src/validate/*"]
     }
   },

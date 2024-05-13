@@ -13,9 +13,9 @@
     "@database": "src/database",
     "@middleware": "src/middleware",
     "@redis": "src/redis",
-    "@static": "src/static",
     "@routes": "src/routes",
     "@socket": "src/socket",
+    "@static": "src/static",
     "@utils": "src/utils",
     "@validate": "src/validate"
   },
