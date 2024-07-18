@@ -6,7 +6,7 @@ exports.verifyApiKey = (req, res, next) => {
   if (req.headers['x-key'] === SERVER_API_KEY) {
     next();
   } else {
-    res.status(401).json(
+    return res.status(401).json(
       baseResp({
         message: 'api-key incorrect',
       })

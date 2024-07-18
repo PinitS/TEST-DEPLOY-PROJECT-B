@@ -26,7 +26,7 @@ dataSource
   });
 
 app.get('/api/versions', async (req, res) => {
-  res.status(200).json(
+ return res.status(200).json(
     baseResp({
       status: true,
       message: 'TEMPLATE EXPRESS JS API IN VERSIONS 1.0.1',
