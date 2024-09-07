@@ -15,7 +15,7 @@ app.get('/api/versions', async (req, res) => {
  return res.status(200).json(
     baseResp({
       status: true,
-      message: 'PROJECT A IN VERSIONS 1.0.0',
+      message: 'PROJECT B IN VERSIONS 1.0.0',
     })
   );
 });
