@@ -1,7 +1,7 @@
 version: '3.8'
 
 services:
-  qr-bistro-api-nginx:
+  project-b-api-nginx:
     image: nginx:alpine
     volumes:
       - ./nginx:/etc/nginx/conf.d
@@ -9,9 +9,9 @@ services:
       VIRTUAL_HOST: project-b-tent-api.tent-official.com
     restart: always
   # app เปลี่ยนชื่อตามชื่อ service ถ้ามีหลายอันก็อย่าซ้ำกัน
-  qr-bistro-api:
+  project-b-api:
     build: .
-    container_name: 'QR_BISTRO_API'
+    container_name: 'project-b-api'
     env_file:
       - ./.env
     restart: always
